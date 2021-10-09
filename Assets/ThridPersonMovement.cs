@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThridPersonMovement : MonoBehaviour
 {
+    public Animator animator;
     public CharacterController controller;
     public Transform cam;
 
@@ -18,6 +19,8 @@ public class ThridPersonMovement : MonoBehaviour
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+
+
     void Update()
     {
         CalculateGravity();
@@ -33,7 +36,13 @@ public class ThridPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime + gravtyMovement);
+            animator.SetBool("Walk", true);
         }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
+       
     }
 
     private bool IsGrounded()
