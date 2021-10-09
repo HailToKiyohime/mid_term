@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CoinCollect : MonoBehaviour
 {
@@ -19,5 +20,9 @@ public class CoinCollect : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20), "Scroe: " + points);
+        if (points == 14)
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 }
